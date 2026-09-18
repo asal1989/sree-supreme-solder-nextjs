@@ -112,7 +112,7 @@ export default function Header() {
               <span className="block whitespace-nowrap text-sm font-bold tracking-wide text-ink sm:text-base">
                 SREE SUPREME SOLDER
               </span>
-              <span className="block whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.2em] text-muted sm:text-xs">
+              <span className="block whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.15em] text-muted sm:text-[9px]">
                 Connecting a Better Tomorrow
               </span>
             </span>
