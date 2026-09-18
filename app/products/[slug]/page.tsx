@@ -19,9 +19,18 @@ export async function generateMetadata({
     return { title: "Product Not Found | Sree Supreme Solder" };
   }
 
+  const title = `${product.name} | Sree Supreme Solder`;
+
   return {
-    title: `${product.name} | Sree Supreme Solder`,
+    title,
     description: product.description,
+    alternates: { canonical: `/products/${product.slug}` },
+    openGraph: {
+      title,
+      description: product.description,
+      url: `/products/${product.slug}`,
+      images: [product.image],
+    },
   };
 }
 

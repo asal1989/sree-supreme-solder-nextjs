@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: "Sree Supreme Solder | Solder Wires, Flux & Soldering Solutions",
   description:
     "Explore Sree Supreme Solder's range of solder wires, lead-free solder wires, solder sticks, liquid flux and solder paint for electronics and industrial applications.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Sree Supreme Solder | Solder Wires, Flux & Soldering Solutions",
+    description:
+      "Explore Sree Supreme Solder's range of solder wires, lead-free solder wires, solder sticks, liquid flux and solder paint for electronics and industrial applications.",
+    url: "/products",
+  },
 };
 
 export default function ProductsPage() {

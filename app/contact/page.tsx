@@ -6,6 +6,12 @@ import ContactForm from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact | Sree Supreme Solder",
   description: "Tell us about your requirement and our team will get back to you.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | Sree Supreme Solder",
+    description: "Tell us about your requirement and our team will get back to you.",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

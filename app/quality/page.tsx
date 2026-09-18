@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Quality | Sree Supreme Solder",
   description:
     "Every batch is made to deliver consistent performance, dependable joints, and confidence on the production floor.",
+  alternates: { canonical: "/quality" },
+  openGraph: {
+    title: "Quality | Sree Supreme Solder",
+    description:
+      "Every batch is made to deliver consistent performance, dependable joints, and confidence on the production floor.",
+    url: "/quality",
+  },
 };
 
 export const POINTS = [

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description:
     "Privacy Policy for Sree Supreme Solder, Madurai — how we handle enquiry and contact information submitted through our website.",
   robots: { index: false },
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

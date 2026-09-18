@@ -8,6 +8,7 @@ import { quickLinks, siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Sitemap | Sree Supreme Solder",
   description: "A full list of pages available on the Sree Supreme Solder website.",
+  alternates: { canonical: "/sitemap" },
 };
 
 export default function SitemapPage() {

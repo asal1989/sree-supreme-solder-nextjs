@@ -22,20 +22,39 @@ const pinyon = Pinyon_Script({
   weight: ["400"],
 });
 
+const title = "Sree Supreme Solder | Precision Soldering, Since 1986 | Madurai";
+const description =
+  "Sree Supreme Solder, Madurai — manufacturer of solder wires, solder sticks, liquid flux and solder paint since 1986. RoHS-compliant lead-free solutions trusted by PCB, electronics and electrical industries across India.";
+
 export const metadata: Metadata = {
-  title: "Sree Supreme Solder | Precision Soldering, Since 1986 | Madurai",
-  description:
-    "Sree Supreme Solder, Madurai — manufacturer of solder wires, solder sticks, liquid flux and solder paint since 1986. RoHS-compliant lead-free solutions trusted by PCB, electronics and electrical industries across India.",
+  title,
+  description,
   metadataBase: new URL("https://www.sreesupremesolder.in"),
   icons: {
     icon: "/assets/img/logo.png",
     apple: "/assets/img/logo.png",
   },
+  openGraph: {
+    title,
+    description,
+    siteName: "Sree Supreme Solder",
+    url: "https://www.sreesupremesolder.in",
+    images: ["/assets/img/logo.png"],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/assets/img/logo.png"],
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Manufacturer",
+  "@type": "Organization",
+  additionalType: "https://schema.org/Manufacturer",
   name: "Sree Supreme Solder",
   foundingDate: "1986",
   founder: { "@type": "Person", name: "Mr. P. Sekar" },

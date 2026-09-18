@@ -2,30 +2,58 @@
 
 import { useState, type FormEvent } from "react";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Enquiry from ${name || "Website Visitor"}`);
-    const bodyLines = [
-      `Name: ${name}`,
-      company && `Company: ${company}`,
-      `Email: ${email}`,
-      phone && `Phone: ${phone}`,
-      "",
-      message,
-    ].filter(Boolean);
-    const body = encodeURIComponent(bodyLines.join("\n"));
-    window.location.href = `mailto:info@sreesupremesolder.in?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, email, phone, message }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
+      setName("");
+      setCompany("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch {
+      setErrorMessage("Network error. Please check your connection and try again.");
+      setStatus("error");
+    }
   }
 
   const inputClass =
     "w-full rounded-lg border border-line bg-bg-alt px-4 py-2.5 text-sm text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-copper";
+
+  if (status === "sent") {
+    return (
+      <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-sm text-emerald-800">
+        Thank you — your enquiry has been sent. Our team will get back to you shortly.
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-5">
@@ -73,11 +101,18 @@ export default function ContactForm() {
         />
       </div>
 
+      {status === "error" && (
+        <p role="alert" className="text-sm text-red-600">
+          {errorMessage}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-7 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(184,98,31,0.35)] transition-transform hover:scale-105"
+        disabled={status === "sending"}
+        className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-7 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(184,98,31,0.35)] transition-transform hover:scale-105 disabled:opacity-60 disabled:hover:scale-100"
       >
-        Send Enquiry <span aria-hidden>&rarr;</span>
+        {status === "sending" ? "Sending…" : "Send Enquiry"} <span aria-hidden>&rarr;</span>
       </button>
       <p className="text-xs text-muted">Fields marked * are required.</p>
     </form>

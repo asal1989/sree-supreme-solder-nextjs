@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
+import { getProductBySlug } from "@/data/products";
 
 const ICONS = {
   trophy: (
@@ -75,28 +76,13 @@ const STAT_ACCENTS = {
   blue: { bar: "from-sky-300 via-sky-400 to-sky-300", icon: "bg-sky-400/15 text-sky-300 ring-sky-300/30" },
 } as const;
 
-const PRODUCTS = [
-  {
-    title: "Solder Wires",
-    desc: "High performance solder wires for superior wetting and stronger joints.",
-    img: "/assets/img/supreme-wire-blue-range.jpg",
-  },
-  {
-    title: "Solder Sticks",
-    desc: "Consistent quality solder sticks for industrial and electronic applications.",
-    img: "/assets/img/supreme-solder-sticks-close.jpg",
-  },
-  {
-    title: "Liquid Flux",
-    desc: "Excellent flux activity for better wetting and reliable connections.",
-    img: "/assets/img/supreme-flux-range.jpg",
-  },
-  {
-    title: "Solder Paint",
-    desc: "Reliable solder paint solutions for electronics manufacturing and PCB assembly.",
-    img: "/assets/img/product-paint.webp",
-  },
-];
+const HOME_PRODUCT_SLUGS = ["solder-wires", "solder-sticks", "liquid-flux", "solder-paint"] as const;
+
+const PRODUCTS = HOME_PRODUCT_SLUGS.map((slug) => {
+  const product = getProductBySlug(slug);
+  if (!product) throw new Error(`Homepage product slug "${slug}" not found in data/products.ts`);
+  return { slug: product.slug, title: product.name, desc: product.description, img: product.image };
+});
 
 const INDUSTRIES = [
   { img: "/assets/img/industries/electronics-manufacturing.webp", label: "Electronics Manufacturing" },
@@ -258,7 +244,7 @@ export default function HomePage() {
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.1}>
+            <Reveal key={p.slug} delay={i * 0.1}>
               <TiltCard className="group h-full overflow-hidden rounded-2xl border border-line bg-panel shadow-lg shadow-black/5">
                 <div className="relative h-44 w-full overflow-hidden">
                   <Image src={p.img} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -266,8 +252,8 @@ export default function HomePage() {
                 <div className="p-5">
                   <h3 className="font-display text-lg font-semibold text-ink">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
-                  <Link href="/products" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-copper">
-                    View Products <span aria-hidden>&rarr;</span>
+                  <Link href={`/products/${p.slug}`} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-copper">
+                    View Product <span aria-hidden>&rarr;</span>
                   </Link>
                 </div>
               </TiltCard>

@@ -7,6 +7,12 @@ import TiltCard from "@/components/TiltCard";
 export const metadata: Metadata = {
   title: "Industries | Sree Supreme Solder",
   description: "Trusted soldering materials for the products and systems that keep the world moving.",
+  alternates: { canonical: "/industries" },
+  openGraph: {
+    title: "Industries | Sree Supreme Solder",
+    description: "Trusted soldering materials for the products and systems that keep the world moving.",
+    url: "/industries",
+  },
 };
 
 export const INDUSTRIES = [

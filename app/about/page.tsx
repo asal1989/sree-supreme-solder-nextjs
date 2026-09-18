@@ -21,6 +21,13 @@ export const metadata: Metadata = {
   title: "About Us | Sree Supreme Solder",
   description:
     "Sree Supreme Solder is a Madurai-based manufacturer of high-quality soldering materials, established in 1986 by founder Mr. P. Sekar.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us | Sree Supreme Solder",
+    description:
+      "Sree Supreme Solder is a Madurai-based manufacturer of high-quality soldering materials, established in 1986 by founder Mr. P. Sekar.",
+    url: "/about",
+  },
 };
 
 const STATS = [

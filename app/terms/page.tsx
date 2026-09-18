@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Terms & Conditions | Sree Supreme Solder",
   description: "Terms and Conditions for using the Sree Supreme Solder website, Madurai.",
   robots: { index: false },
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
