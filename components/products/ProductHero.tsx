@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ShieldCheck, Layers, Factory } from "lucide-react";
+import { ShieldCheck, Layers, Factory, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const TRUST_POINTS = [
@@ -44,6 +44,14 @@ export default function ProductHero() {
               </Reveal>
             ))}
           </div>
+
+          <a
+            href="/downloads/sree-supreme-solder-catalog.pdf"
+            download
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(184,98,31,0.3)] transition-transform hover:scale-105"
+          >
+            Download Full Catalog (PDF) <Download size={16} />
+          </a>
         </Reveal>
 
         <Reveal delay={0.2}>

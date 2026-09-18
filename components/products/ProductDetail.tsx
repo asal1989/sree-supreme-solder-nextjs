@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import type { Product } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 
 export default function ProductDetail({ product }: { product: Product }) {
   return (
@@ -101,12 +102,23 @@ export default function ProductDetail({ product }: { product: Product }) {
             >
               Request Product Details <ArrowRight size={16} />
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href={whatsappLink(
+                `Hello Sree Supreme Solder, I would like to enquire about ${product.name}.`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+            >
+              Enquire on WhatsApp <ArrowRight size={16} />
+            </a>
+            <a
+              href="/downloads/sree-supreme-solder-catalog.pdf"
+              download
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-copper hover:text-copper"
             >
-              Get a Quote <ArrowRight size={16} />
-            </Link>
+              Download Catalog <Download size={16} />
+            </a>
           </div>
         </Reveal>
       </div>

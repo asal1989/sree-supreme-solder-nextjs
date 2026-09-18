@@ -158,6 +158,18 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/downloads/sree-supreme-solder-catalog.pdf"
+                  download
+                  className="group inline-flex items-center gap-1.5 text-cream/70 transition-colors hover:text-amber"
+                >
+                  Download Catalog (PDF)
+                  <span className="translate-x-0 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
+                    &rarr;
+                  </span>
+                </a>
+              </li>
             </ul>
           </nav>
 

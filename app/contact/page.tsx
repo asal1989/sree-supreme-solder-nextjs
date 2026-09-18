@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "./ContactForm";
@@ -53,7 +54,9 @@ export default function ContactPage() {
         <Reveal delay={0.15} className="md:col-span-3">
           <h2 className="font-display text-xl font-semibold text-ink">Send Us an Enquiry</h2>
           <div className="mt-6 rounded-2xl border border-line bg-panel p-6 shadow-sm sm:p-8">
-            <ContactForm />
+            <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-bg-alt" />}>
+              <ContactForm />
+            </Suspense>
           </div>
         </Reveal>
       </section>

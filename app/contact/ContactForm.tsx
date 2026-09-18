@@ -1,14 +1,25 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { products } from "@/data/products";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const GENERAL_ENQUIRY = "General Enquiry";
+
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const productFromQuery = searchParams.get("product") || "";
+  const initialProduct = products.some((p) => p.name === productFromQuery)
+    ? productFromQuery
+    : GENERAL_ENQUIRY;
+
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [productInterest, setProductInterest] = useState(initialProduct);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -22,7 +33,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, phone, message }),
+        body: JSON.stringify({ name, company, email, phone, productInterest, message }),
       });
       const data = await res.json().catch(() => ({}));
 
@@ -37,6 +48,7 @@ export default function ContactForm() {
       setCompany("");
       setEmail("");
       setPhone("");
+      setProductInterest(GENERAL_ENQUIRY);
       setMessage("");
     } catch {
       setErrorMessage("Network error. Please check your connection and try again.");
@@ -85,6 +97,25 @@ export default function ContactForm() {
           </label>
           <input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className={inputClass} />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="productInterest" className="mb-1.5 block text-sm font-medium text-ink">
+          Product of Interest
+        </label>
+        <select
+          id="productInterest"
+          value={productInterest}
+          onChange={(e) => setProductInterest(e.target.value)}
+          className={inputClass}
+        >
+          <option value={GENERAL_ENQUIRY}>General Enquiry</option>
+          {products.map((p) => (
+            <option key={p.slug} value={p.name}>
+              {p.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>

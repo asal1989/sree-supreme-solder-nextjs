@@ -3,6 +3,7 @@ import { Poppins, Cormorant_Garamond, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/Footer";
+import WhatsAppFab from "@/components/WhatsAppFab";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppFab />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

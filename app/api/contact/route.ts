@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, company, email, phone, message } = (body ?? {}) as Record<string, unknown>;
+  const { name, company, email, phone, productInterest, message } = (body ?? {}) as Record<string, unknown>;
 
   if (
     typeof name !== "string" ||
@@ -37,12 +37,18 @@ export async function POST(request: Request) {
       from: `"Sree Supreme Solder Website" <${process.env.SMTP_USER}>`,
       to: getContactRecipient(),
       replyTo: email,
-      subject: `Enquiry from ${name.trim()}`,
+      subject:
+        typeof productInterest === "string" && productInterest.trim() && productInterest !== "General Enquiry"
+          ? `Enquiry from ${name.trim()} — ${productInterest.trim()}`
+          : `Enquiry from ${name.trim()}`,
       text: [
         `Name: ${name.trim()}`,
         typeof company === "string" && company.trim() ? `Company: ${company.trim()}` : null,
         `Email: ${email.trim()}`,
         typeof phone === "string" && phone.trim() ? `Phone: ${phone.trim()}` : null,
+        typeof productInterest === "string" && productInterest.trim()
+          ? `Product of Interest: ${productInterest.trim()}`
+          : null,
         "",
         message.trim(),
       ]

@@ -7,6 +7,7 @@ export const siteConfig = {
   phoneHref: "tel:+919944482330",
   email: "info@sreesupremesolder.in",
   emailHref: "mailto:info@sreesupremesolder.in",
+  whatsappNumber: "919944482330",
   addressLines: ["6, Nehru Nagar, Nethaji Road,", "Bypass Road, Madurai – 625003,", "Tamil Nadu, India"],
   mapUrl:
     "https://maps.google.com/maps?q=6%20Nehru%20Nagar%2C%20Nethaji%20Road%2C%20Bypass%20Road%2C%20Madurai%20625003",
