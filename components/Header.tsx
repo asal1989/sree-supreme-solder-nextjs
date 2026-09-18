@@ -95,30 +95,30 @@ export default function Header() {
       <div className="relative overflow-hidden border-b border-line bg-white/95 backdrop-blur-xl">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-56 bg-gradient-to-br from-copper to-copper-2 2xl:block"
-          style={{ clipPath: "polygon(30% 0, 100% 0, 100% 100%, 0 100%)" }}
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-40 bg-gradient-to-br from-copper to-copper-2 min-[1700px]:block"
+          style={{ clipPath: "polygon(35% 0, 100% 0, 100% 100%, 0 100%)" }}
         >
-          <p className="absolute right-6 top-1/2 max-w-[9rem] -translate-y-1/2 text-right text-[10px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-white/90">
+          <p className="absolute right-5 top-1/2 max-w-[7rem] -translate-y-1/2 text-right text-[9px] font-semibold uppercase leading-relaxed tracking-[0.1em] text-white/90">
             Innovative Soldering Solutions
             <br />
             for a Smarter Tomorrow
           </p>
         </div>
 
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 2xl:pr-56">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+          <Link href="/" className="flex shrink-0 items-center gap-3">
             <Image src="/assets/img/logo.png" alt="Sree Supreme Solder logo" width={40} height={40} priority />
             <span className="leading-tight">
-              <span className="block text-sm font-bold tracking-wide text-ink sm:text-base">
+              <span className="block whitespace-nowrap text-sm font-bold tracking-wide text-ink sm:text-base">
                 SREE SUPREME SOLDER
               </span>
-              <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-muted sm:text-xs">
+              <span className="block whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.2em] text-muted sm:text-xs">
                 Connecting a Better Tomorrow
               </span>
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-7 xl:flex">
             {NAV.map((item) => (
               <Link
                 key={item.href}
@@ -135,7 +135,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             <div className="relative">
               <button
                 type="button"
@@ -175,14 +175,14 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("whatsapp_click", { source: "header" })}
-              className="inline-flex items-center gap-2 rounded-full border border-[#25D366]/40 px-4 py-2.5 text-sm font-semibold text-[#128C4A] transition-colors hover:bg-[#25D366]/10"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[#25D366]/40 px-4 py-2.5 text-sm font-semibold text-[#128C4A] transition-colors hover:bg-[#25D366]/10"
             >
               <WhatsAppIcon size={16} /> Chat on WhatsApp
             </a>
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(184,98,31,0.3)] transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-copper to-copper-2 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(184,98,31,0.3)] transition-transform hover:scale-105"
             >
               Get a Quote <span aria-hidden>&rarr;</span>
             </Link>
@@ -191,7 +191,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-line text-ink lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-line text-ink xl:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
           >
@@ -208,7 +208,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-white lg:hidden">
+        <div className="border-t border-line bg-white xl:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-3 sm:px-8">
             {NAV.map((item) => (
               <Link
