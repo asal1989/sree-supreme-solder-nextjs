@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, Lock } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -29,6 +30,7 @@ export default function NewsletterForm() {
         return;
       }
 
+      trackEvent("newsletter_signup");
       setStatus("sent");
       setEmail("");
     } catch {

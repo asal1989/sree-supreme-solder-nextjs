@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { ShieldCheck, Layers, Factory, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { trackEvent } from "@/lib/analytics";
 
 const TRUST_POINTS = [
   { icon: ShieldCheck, tag: "QUALITY", label: "Consistent Quality" },
@@ -48,6 +51,7 @@ export default function ProductHero() {
           <a
             href="/downloads/sree-supreme-solder-catalog.pdf"
             download
+            onClick={() => trackEvent("catalog_download", { source: "products_hero" })}
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(184,98,31,0.3)] transition-transform hover:scale-105"
           >
             Download Full Catalog (PDF) <Download size={16} />

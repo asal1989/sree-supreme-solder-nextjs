@@ -1,4 +1,7 @@
+"use client";
+
 import { whatsappLink, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 export default function WhatsAppFab() {
   return (
@@ -6,6 +9,7 @@ export default function WhatsAppFab() {
       href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent("whatsapp_click", { source: "fab" })}
       aria-label="Chat with Sree Supreme Solder on WhatsApp (opens in a new tab)"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.45)] transition-transform hover:scale-110"
     >

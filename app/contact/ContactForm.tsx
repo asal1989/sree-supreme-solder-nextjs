@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { products } from "@/data/products";
+import { trackEvent } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -43,6 +44,7 @@ export default function ContactForm() {
         return;
       }
 
+      trackEvent("contact_form_submit", { product: productInterest });
       setStatus("sent");
       setName("");
       setCompany("");

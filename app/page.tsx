@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
+import Testimonials from "@/components/Testimonials";
+import Certifications from "@/components/Certifications";
 import { getProductBySlug } from "@/data/products";
 
 const ICONS = {
@@ -404,6 +406,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
+      <Certifications />
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-dark text-white">

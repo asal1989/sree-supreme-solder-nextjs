@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { whatsappLink, DEFAULT_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -49,6 +50,7 @@ export default function Header() {
             href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("whatsapp_click", { source: "header" })}
             aria-label="Chat with us on WhatsApp (opens in a new tab)"
             className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-105"
           >
@@ -106,7 +108,10 @@ export default function Header() {
               href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackEvent("whatsapp_click", { source: "mobile_menu" });
+                setOpen(false);
+              }}
               className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white"
             >
               Chat on WhatsApp

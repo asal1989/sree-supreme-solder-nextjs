@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import type { Product } from "@/data/products";
 import { whatsappLink } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ProductDetail({ product }: { product: Product }) {
   return (
@@ -108,6 +111,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               )}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { source: "product_detail", product: product.slug })}
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Enquire on WhatsApp <ArrowRight size={16} />
@@ -115,6 +119,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             <a
               href="/downloads/sree-supreme-solder-catalog.pdf"
               download
+              onClick={() => trackEvent("catalog_download", { source: "product_detail", product: product.slug })}
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-copper hover:text-copper"
             >
               Download Catalog <Download size={16} />

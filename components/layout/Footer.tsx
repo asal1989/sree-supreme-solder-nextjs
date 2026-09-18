@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Gem, Users, Settings2, Leaf, MapPin, Phone, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import NewsletterForm from "@/components/layout/NewsletterForm";
+import TrackedLink from "@/components/TrackedLink";
 import { products } from "@/data/products";
 import { quickLinks, siteConfig } from "@/config/site";
 
@@ -159,16 +160,18 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <a
+                <TrackedLink
                   href="/downloads/sree-supreme-solder-catalog.pdf"
                   download
+                  eventName="catalog_download"
+                  eventParams={{ source: "footer" }}
                   className="group inline-flex items-center gap-1.5 text-cream/70 transition-colors hover:text-amber"
                 >
                   Download Catalog (PDF)
                   <span className="translate-x-0 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
                     &rarr;
                   </span>
-                </a>
+                </TrackedLink>
               </li>
             </ul>
           </nav>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import Analytics from "@/components/Analytics";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFab />
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
