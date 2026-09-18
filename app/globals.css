@@ -25,6 +25,12 @@
 
   --font-sans: var(--font-poppins), system-ui, sans-serif;
   --font-display: var(--font-cormorant), serif;
+  --font-script-family: var(--font-script), cursive;
+}
+
+.font-script {
+  font-family: var(--font-script-family);
+  font-weight: 400;
 }
 
 html {

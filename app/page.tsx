@@ -99,34 +99,38 @@ const PRODUCTS = [
 ];
 
 const INDUSTRIES = [
-  { icon: "💻", label: "Electronics Manufacturing" },
-  { icon: "🏭", label: "Industrial Equipment" },
-  { icon: "🚗", label: "Automotive" },
-  { icon: "✈️", label: "Aerospace" },
-  { icon: "🔌", label: "Consumer Appliances" },
-  { icon: "🏥", label: "Medical Devices" },
-  { icon: "⚡", label: "Renewable Energy" },
-  { icon: "📡", label: "Telecommunications" },
+  { img: "/assets/img/industries/electronics-manufacturing.webp", label: "Electronics Manufacturing" },
+  { img: "/assets/img/industries/industrial-equipment.webp", label: "Industrial Equipment" },
+  { img: "/assets/img/industries/automotive.webp", label: "Automotive" },
+  { img: "/assets/img/industries/aerospace.webp", label: "Aerospace" },
+  { img: "/assets/img/industries/consumer-appliances.webp", label: "Consumer Appliances" },
+  { img: "/assets/img/industries/medical-devices.webp", label: "Medical Devices" },
+  { img: "/assets/img/industries/renewable-energy.webp", label: "Renewable Energy" },
+  { img: "/assets/img/industries/telecommunications.webp", label: "Telecommunications" },
 ];
 
 const QUALITY_POINTS = [
   {
-    icon: "🛡️",
+    img: "/assets/img/quality/consistent-quality.webp",
+    tag: "TESTED · TRUSTED · CONSISTENT",
     title: "Consistent Quality",
     desc: "Reliable, tested soldering materials manufactured to the same high standard, batch after batch.",
   },
   {
-    icon: "⚙️",
+    img: "/assets/img/quality/reliable-performance.webp",
+    tag: "PERFORMANCE THAT DELIVERS",
     title: "Reliable Performance",
     desc: "Strong, durable joints and consistent output trusted by manufacturers for nearly four decades.",
   },
   {
-    icon: "🌐",
+    img: "/assets/img/quality/wide-applications.webp",
+    tag: "SOLUTIONS FOR EVERY INDUSTRY",
     title: "Wide Applications",
     desc: "A complete range of solder wires, sticks, flux and paint serving diverse industrial requirements.",
   },
   {
-    icon: "🤝",
+    img: "/assets/img/quality/customer-focus.webp",
+    tag: "PARTNERING FOR A BRIGHTER TOMORROW",
     title: "Customer Focus",
     desc: "Long-term partnerships built on technical support, responsiveness and dependable supply.",
   },
@@ -314,9 +318,19 @@ export default function HomePage() {
           <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {INDUSTRIES.map((i, idx) => (
               <Reveal key={i.label} delay={idx * 0.05}>
-                <TiltCard className="flex h-full flex-col items-center gap-3 rounded-xl border border-line bg-panel p-6 text-center shadow-sm transition-colors hover:border-copper">
-                  <span className="text-3xl">{i.icon}</span>
-                  <span className="text-sm font-semibold text-ink">{i.label}</span>
+                <TiltCard className="group h-full overflow-hidden rounded-xl border border-line bg-panel shadow-sm transition-colors hover:border-copper">
+                  <div className="relative h-32 w-full overflow-hidden sm:h-36">
+                    <Image
+                      src={i.img}
+                      alt={i.label}
+                      fill
+                      sizes="(min-width: 640px) 25vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-sm font-semibold text-ink">{i.label}</span>
+                  </div>
                 </TiltCard>
               </Reveal>
             ))}
@@ -325,29 +339,47 @@ export default function HomePage() {
       </section>
 
       {/* JOURNEY */}
-      <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-24 sm:px-8 md:grid-cols-2">
-        <Reveal>
-          <div className="relative h-72 w-full overflow-hidden rounded-2xl sm:h-96">
-            <Image src="/assets/img/about-madurai.webp" alt="Madurai Meenakshi Amman Temple skyline" fill className="object-cover" />
-          </div>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-amber">
-            Our Journey · Since 1986
-          </span>
-          <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
-            From Madurai to Industries Worldwide
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted">
-            Founded by <strong className="text-copper">Mr. P. Sekar</strong> in Madurai, Tamil Nadu,
-            Sree Supreme Solder has been delivering high-quality soldering materials for nearly four
-            decades. From Madurai to industries worldwide, we continue to connect a better tomorrow
-            through consistent quality and reliable soldering solutions.
-          </p>
-          <Link href="/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-copper">
-            Know Our Story <span aria-hidden>&rarr;</span>
-          </Link>
-        </Reveal>
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
+          <Image src="/assets/img/world-map.svg" alt="" fill className="object-cover object-center" />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 sm:px-8 md:grid-cols-2">
+          <Reveal>
+            <div className="relative mx-auto max-w-md -rotate-2 overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 hover:rotate-0">
+              <Image
+                src="/assets/img/madurai-journey-card.webp"
+                alt="Meenakshi Amman Temple at sunset, Madurai — a legacy that connects the world"
+                width={938}
+                height={638}
+                className="h-auto w-full"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-amber">
+              Our Journey · Since 1986
+            </span>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-ink sm:text-4xl">
+              From Madurai to Industries Worldwide
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted">
+              Founded by <strong className="text-copper">Mr. P. Sekar</strong> in Madurai, Tamil Nadu,
+              Sree Supreme Solder has been delivering high-quality soldering materials for nearly four
+              decades. From Madurai to industries worldwide, we continue to connect a better tomorrow
+              through consistent quality and reliable soldering solutions.
+            </p>
+            <Link href="/about" className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-copper to-copper-2 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(184,98,31,0.35)] transition-transform hover:scale-105">
+              Know Our Story <span aria-hidden>&rarr;</span>
+            </Link>
+            <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-6 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted">
+              <span>Trusted Roots</span>
+              <span className="text-line">|</span>
+              <span>Global Reach</span>
+              <span className="text-line">|</span>
+              <span>A Brighter Tomorrow</span>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* QUALITY */}
@@ -362,10 +394,24 @@ export default function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {QUALITY_POINTS.map((q, i) => (
               <Reveal key={q.title} delay={i * 0.08}>
-                <div className="h-full rounded-xl border border-line bg-panel p-6 shadow-sm">
-                  <span className="text-2xl">{q.icon}</span>
-                  <h3 className="mt-4 font-display text-base font-semibold text-ink">{q.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{q.desc}</p>
+                <div className="group h-full overflow-hidden rounded-xl border border-line bg-panel shadow-sm">
+                  <div className="relative h-36 w-full overflow-hidden">
+                    <Image
+                      src={q.img}
+                      alt={q.title}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <span className="absolute right-3 top-3 max-w-[45%] text-right text-[9px] font-semibold uppercase leading-tight tracking-wider text-white/85">
+                      {q.tag}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-base font-semibold text-ink">{q.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{q.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
