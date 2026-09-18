@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ProductHero from "@/components/products/ProductHero";
 import ProductGrid from "@/components/products/ProductGrid";
 import ProductBenefits from "@/components/products/ProductBenefits";
@@ -24,7 +25,9 @@ export default function ProductsPage() {
   return (
     <>
       <ProductHero />
-      <ProductGrid />
+      <Suspense fallback={null}>
+        <ProductGrid />
+      </Suspense>
       <ProductBenefits />
       <IndustriesSection />
       <QualitySection />

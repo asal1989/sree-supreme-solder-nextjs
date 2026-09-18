@@ -20,7 +20,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Get in Touch"
-        title="Let&rsquo;s Build a Stronger Tomorrow Together"
+        title="Let’s Build a Stronger Tomorrow Together"
         lead="Tell us about your requirement and our team will get back to you."
       />
 

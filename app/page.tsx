@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
 import Testimonials from "@/components/Testimonials";
 import Certifications from "@/components/Certifications";
+import HeroHeading from "@/components/HeroHeading";
 import { getProductBySlug } from "@/data/products";
 
 const ICONS = {
@@ -163,13 +164,7 @@ export default function HomePage() {
                 <span className="h-px w-8 bg-sky-300/50" />
               </div>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-                Building Stronger
-                <br />
-                <span className="text-sky-300">Connections</span> for a Better Tomorrow
-              </h1>
-            </Reveal>
+            <HeroHeading className="mt-6 font-display text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl" />
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
                 For over three decades, we have been manufacturing high-quality, lead-free

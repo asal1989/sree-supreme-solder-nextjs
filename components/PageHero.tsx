@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 
 export default function PageHero({
   eyebrow,
@@ -20,9 +21,13 @@ export default function PageHero({
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-copper">
             {eyebrow}
           </span>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-            {title}
-          </h1>
+        </Reveal>
+        <AnimatedHeading
+          as="h1"
+          text={title}
+          className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl"
+        />
+        <Reveal delay={0.15}>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">{lead}</p>
         </Reveal>
       </div>
