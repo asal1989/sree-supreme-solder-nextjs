@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* light body */
+  --color-bg: #ffffff;
+  --color-bg-alt: #faf7f3;
+  --color-panel: #ffffff;
+  --color-ink: #1a140f;
+  --color-muted: #6b5d50;
+  --color-line: #e8e1d8;
+
+  /* dark accent bands (hero / footer / CTA) */
+  --color-dark: #15100b;
+  --color-dark-2: #1f170f;
+  --color-dark-panel: #241a11;
+  --color-line-dark: rgba(255, 255, 255, 0.1);
+  --color-cream: #f0c89a;
+  --color-white: #ffffff;
+
+  /* copper accent, used everywhere */
+  --color-copper: #b8621f;
+  --color-copper-2: #8f4a17;
+  --color-amber: #e8792a;
+  --color-gold: #d97f35;
+
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-display: var(--font-cormorant), serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-copper);
+  color: var(--color-white);
+}
+
+.copper-text {
+  background: linear-gradient(135deg, #d97f35 0%, #b8621f 60%, #8f4a17 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.perspective-container {
+  perspective: 1200px;
+}
+
+.hero-circuit-grid {
+  background-image:
+    linear-gradient(rgba(32, 214, 184, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 214, 184, 0.13) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    -1px -1px,
+    -1px -1px;
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.3) 62%, transparent);
+}
