@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Poppins, Cormorant_Garamond, Pinyon_Script } from "next/font/google";
+import { Inter, Archivo, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import Analytics from "@/components/Analytics";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
 });
 
 const pinyon = Pinyon_Script({
@@ -68,10 +69,16 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${poppins.variable} ${cormorant.variable} ${pinyon.variable}`}>
+    <html lang="en" className={`${inter.variable} ${archivo.variable} ${pinyon.variable}`}>
       <body className="flex min-h-screen flex-col bg-bg text-ink antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFab />
         <Analytics />

@@ -31,7 +31,7 @@ export default function IndustriesSection() {
           <Reveal key={item.label} delay={i * 0.07}>
             <div className="flex items-center gap-4 border-b border-line pb-5">
               <item.icon size={24} strokeWidth={1.5} className="shrink-0 text-copper" />
-              <span className="font-display text-base font-semibold text-ink">{item.label}</span>
+              <span className="min-w-0 break-words font-display text-base font-semibold text-ink">{item.label}</span>
             </div>
           </Reveal>
         ))}
