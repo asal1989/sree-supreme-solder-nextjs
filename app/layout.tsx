@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import { withBase } from "@/lib/basePath";
 import Analytics from "@/components/Analytics";
 
 const inter = Inter({
@@ -34,15 +35,15 @@ export const metadata: Metadata = {
   description,
   metadataBase: new URL("https://www.sreesupremesolder.in"),
   icons: {
-    icon: "/assets/img/logo.png",
-    apple: "/assets/img/logo.png",
+    icon: withBase("/assets/img/logo.png"),
+    apple: withBase("/assets/img/logo.png"),
   },
   openGraph: {
     title,
     description,
     siteName: "Sree Supreme Solder",
     url: "https://www.sreesupremesolder.in",
-    images: ["/assets/img/logo.png"],
+    images: [withBase("/assets/img/logo.png")],
     locale: "en_IN",
     type: "website",
   },
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/assets/img/logo.png"],
+    images: [withBase("/assets/img/logo.png")],
   },
 };
 

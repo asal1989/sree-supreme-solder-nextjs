@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { products } from "@/data/products";
 import { trackEvent } from "@/lib/analytics";
+import { IS_STATIC_EXPORT } from "@/lib/basePath";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -29,6 +30,16 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage("");
+
+    if (IS_STATIC_EXPORT) {
+      const lines = [`Name: ${name}`, `Email: ${email}`];
+      if (company) lines.push(`Company: ${company}`);
+      if (phone) lines.push(`Phone: ${phone}`);
+      lines.push(`Product: ${productInterest}`, "", message);
+      window.location.href = `mailto:info@sreesupremesolder.in?subject=${encodeURIComponent(`Enquiry from ${name}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
+      setStatus("sent");
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {

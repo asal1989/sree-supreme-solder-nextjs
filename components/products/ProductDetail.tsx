@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeft, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import type { Product } from "@/data/products";
 import { whatsappLink } from "@/lib/whatsapp";
+import { withBase } from "@/lib/basePath";
 import { trackEvent } from "@/lib/analytics";
 
 export default function ProductDetail({ product }: { product: Product }) {
@@ -117,7 +118,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               Enquire on WhatsApp <ArrowRight size={16} />
             </a>
             <a
-              href="/downloads/sree-supreme-solder-catalog.pdf"
+              href={withBase("/downloads/sree-supreme-solder-catalog.pdf")}
               download
               onClick={() => trackEvent("catalog_download", { source: "product_detail", product: product.slug })}
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-copper hover:text-copper"

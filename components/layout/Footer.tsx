@@ -6,6 +6,7 @@ import NewsletterForm from "@/components/layout/NewsletterForm";
 import TrackedLink from "@/components/TrackedLink";
 import { LinkedinIcon, YoutubeIcon, SocialIcon } from "@/components/SocialIcons";
 import { products } from "@/data/products";
+import { withBase } from "@/lib/basePath";
 import { quickLinks, siteConfig } from "@/config/site";
 
 const socialIconClass =
@@ -116,7 +117,7 @@ export default function Footer() {
               ))}
               <li>
                 <TrackedLink
-                  href="/downloads/sree-supreme-solder-catalog.pdf"
+                  href={withBase("/downloads/sree-supreme-solder-catalog.pdf")}
                   download
                   eventName="catalog_download"
                   eventParams={{ source: "footer" }}

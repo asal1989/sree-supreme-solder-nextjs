@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, Lock } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { IS_STATIC_EXPORT } from "@/lib/basePath";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -15,6 +16,12 @@ export default function NewsletterForm() {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage("");
+
+    if (IS_STATIC_EXPORT) {
+      window.location.href = `mailto:info@sreesupremesolder.in?subject=${encodeURIComponent("Newsletter subscription")}&body=${encodeURIComponent(`Please subscribe: ${email}`)}`;
+      setStatus("sent");
+      return;
+    }
 
     try {
       const res = await fetch("/api/newsletter", {
